@@ -5,11 +5,13 @@ import ThumpUpAltIcon from '@material-ui/icons/ThumbUpAlt';
 import DeleteIcon from '@material-ui/icons/Delete';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import moment from 'moment';
+import {useDispatch} from 'react-redux';
 
+import {deletePost} from '../../../actions/posts';
 
 const Post = ({post, setCurrentId}) => {
    const classes = useStyles();
-
+   const dispatch = useDispatch();
 
 
 
@@ -45,7 +47,7 @@ const Post = ({post, setCurrentId}) => {
           {post.likeCount}
         </Button>
 
-        <Button size = "small" color = "primary" onClick={() => {} }>
+        <Button size = "small" color = "primary" onClick={() => dispatch(deletePost(post._id)) }>
           <DeleteIcon fontSize = "small"/>
           Delete
         </Button>

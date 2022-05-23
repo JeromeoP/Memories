@@ -22,13 +22,13 @@ const Post = ({post, setCurrentId}) => {
       <Typography variant ="h6">{post.creator}</Typography>
       <Typography variant ="body2">{moment(post.createdAt).fromNow()}</Typography>
       </div>
-      <div classname = {classes.overlay2}>
+      <div className = {classes.overlay2}>
         <Button
-         style = {{color: 'black'}}
+         style = {{color: 'white'}}
          size = "small"
           onClick = {() => setCurrentId(post._id)}
           >
-          <MoreHorizIcon fontSize="default" />
+          <MoreHorizIcon fontSize="medium" />
         </Button>
       </div>
       <div className = {classes.details}>
@@ -40,7 +40,7 @@ const Post = ({post, setCurrentId}) => {
       <Typography variant ="body2" color ="textSecondary" component ="p" gutterBottom>{post.message}</Typography>
       </CardContent>
 
-      <CardActions classname = {classes.cardActions}>
+      <CardActions className = {classes.cardActions}>
         <Button size = "small" color = "primary" onClick={() => dispatch(likePost(post._id)) }>
           <ThumpUpAltIcon fontSize = "small"/>
           &nbsp; Like {post.likeCount}

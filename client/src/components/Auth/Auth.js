@@ -7,26 +7,43 @@ import useStyles from './styles';
 import Icon from './icon';
 import { useNavigate } from "react-router-dom";
 import Input from './Input';
+
+import {signin, signup} from '../../actions/auth';
+
+const initialState = {firstName: '', lastName: '', email: '', password: '', confirmPassword: ''}
 const Auth = () => {
     const classes = useStyles();
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
+
     const [showPassword, setShowPassword] = useState(false);
     const [isSignUp, setIsSignUp] = useState(false);
+    const [formData, setFormData] = useState(initialState);
 
     
 
     const handleShowPassword = () => setShowPassword((prevShowPassword) => !prevShowPassword);
-    const handleSubmit = () => {
 
+    const handleSubmit = (e) => {
+            e.preventDefault();
+
+            if(isSignUp) {
+                dispatch(signup(formData, navigate));
+
+
+            }else {
+                dispatch(signin(formData, navigate));
+
+            }
     }
-    const handleChange = () => {
+    const handleChange = (e) => {
+        setFormData({ ... formData, [e.target.name]: e.target.value})
 
     }
     const switchMode = ()=> {
         setIsSignUp((prevIsSignUp) => !prevIsSignUp);
-        handleShowPassword(false);
+        setShowPassword(false);
     }
 
     const googleSuccess = async (res) => {
@@ -66,7 +83,7 @@ const Auth = () => {
                     <Input name = "email" label = "Email Address" handleChange = {handleChange} type = "email" />
                     <Input name = "password" label = "Password" handleChange = {handleChange} type = {showPassword ? "text" : "password"} handleShowPassword = {handleShowPassword}/>
                     {
-                        isSignUp && <Input name = "confiromPassword" label = "Repeat Password" handleChange = {handleChange} type = "password"/>
+                        isSignUp && <Input name = "confirmPassword" label = "Repeat Password" handleChange = {handleChange} type = "password"/>
 
                     }
                 </Grid>

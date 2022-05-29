@@ -9,7 +9,7 @@ export default makeStyles((theme) => ({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    padding: '10px 50px',
+    padding: '10px 90px',
   },
   heading: {
     color: 'rgba(0,183,255, 1)',
@@ -26,7 +26,15 @@ export default makeStyles((theme) => ({
   profile: {
     display: 'flex',
     justifyContent: 'space-between',
-    width: '400px',
+    width: '300px',
+  },
+  logout: {
+    display: 'flex',
+    justifyContent: 'flex-end',
+
+
+    backgroundColor: "#00203F",
+    color: "#ADF0D1",
   },
   userName: {
     display: 'flex',
@@ -37,8 +45,8 @@ export default makeStyles((theme) => ({
     alignItems: 'center',
   },
   purple: {
-    color: theme.palette.getContrastText(deepPurple[500]),
-    backgroundColor: deepPurple[500],
-  
+    color: "#ADF0D1",
+    backgroundColor: "#00203F",
+ 
   }
 }));

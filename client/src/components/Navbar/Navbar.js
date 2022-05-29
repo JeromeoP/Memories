@@ -3,6 +3,7 @@ import {AppBar, Typography, Toolbar, Avatar, Button} from '@material-ui/core';
 import {Link, useNavigate, useLocation } from 'react-router-dom';
 import { useMediaQuery } from "@material-ui/core";
 import { useTheme } from "@material-ui/core/styles";
+import decode from 'jwt-decode';
 
 
 import useStyles from './styles';
@@ -16,6 +17,7 @@ const Navbar = () => {
     const dispatch = useDispatch();
     const location = useLocation();
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
+    const token = user?.token;
 
     const logOut = () => {
         dispatch({type: 'LOGOUT'});
@@ -27,8 +29,12 @@ const Navbar = () => {
 
 
     useEffect(() => {
-        const token = user?.token;
-
+        if (token) {
+            const decodedToken = decode(token);
+            if(decodedToken.exp * 1000 < new Date().getTime()) {
+                logOut();
+            }
+        }
         setUser(JSON.parse(localStorage.getItem('profile')));
     }, [location]);
     
@@ -37,10 +43,9 @@ const Navbar = () => {
             <AppBar className = {classes.appBar} position ="static" color ="inherit" >
             <div className = {classes.brandContainer}>
 
-            <Typography  component = {Link} to = "/" variant="h5" className ={classes.heading}  align= "center"> 
+            <Typography  component = {Link} to = "/" variant="h4" className ={classes.heading}  align= "center"> 
             <div className = "typing-demo">Memories</div>
              </Typography>
-            <img className = {classes.image} src={memories} alt= "memories" height="60" />
             </div>
             <Toolbar className = {classes.toolbar}>
                 {user ? (
@@ -52,7 +57,7 @@ const Navbar = () => {
                 <Button variant = "contained" className = {classes.logout} color ="secondary" onClick = {logOut}>Log out</Button>
                     </div>
                 ) : (
-                    <Button component = {Link} to = "/auth" variant = "contained" color ="primary">Sign in</Button>
+                    <Button component = {Link} to = "/auth" variant = "contained" className = {classes.logout} color ="primary">Sign in</Button>
                 )}
             </Toolbar>
         

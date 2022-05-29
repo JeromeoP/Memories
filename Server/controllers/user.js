@@ -25,7 +25,6 @@ export const signin = async(req, res) => {
 
 export const signup = async(req, res) => {
     const {email, password, confirmPassword, firstName, lastName, } = req.body;
-    console.log("??");
     
     try {
         const existingUser = await User.findOne({email});
@@ -41,7 +40,6 @@ export const signup = async(req, res) => {
         const token = jwt.sign({email: result.email, id: result._id}, 'test', {expiresIn: "1h"});
 
         res.status(200).json({result, token});
-        console.log("We did it!", result);
 
 
 

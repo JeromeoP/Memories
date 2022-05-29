@@ -1,7 +1,6 @@
-import {FETCH_ALL, CREATE, UPDATE, DELETE} from '../constants/actionTypes';
+import {FETCH_ALL, CREATE, UPDATE, DELETE, FETCH_BY_SEARCH} from '../constants/actionTypes';
 
 export default (posts = [], action) => {
-    console.log("Är vi någonsin här?", action);
     switch (action.type) {
         case UPDATE:
             return posts.map((post) => post._id === action.payload._id ? action.payload : post );
@@ -9,9 +8,12 @@ export default (posts = [], action) => {
             return posts.filter((post) => post._id !== action.payload)
         case FETCH_ALL:
             return action.payload;
+        case FETCH_BY_SEARCH:
+            return action.payload;
         case CREATE:
             return [... posts, action.payload];    
         default:
             return posts;
     }
 }
+

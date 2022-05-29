@@ -19,7 +19,6 @@ export const signup = (formData, navigate) => async (dispatch) => {
         //sign up the user
 
         const {data} = await api.signUp(formData);
-        console.log("Vad är Data: ",data);
         dispatch({type: AUTH, data});
         navigate("/");
     } catch (error) {

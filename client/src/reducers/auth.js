@@ -1,7 +1,6 @@
 import {AUTH, LOGOUT} from '../constants/actionTypes';
 
 const authReducer = (state = {authData: null }, action) => {
-    console.log("här då?", action.type);
     switch (action.type) {
 
         case AUTH:

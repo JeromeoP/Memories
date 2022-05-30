@@ -12,6 +12,11 @@ export default makeStyles((theme) => ({
     marginTop: '1rem',
     padding: '16px',
   },
+  searchButton: {
+    color: "#000000",
+    backgroundColor: "#D6D6D6",
+  },
+ 
   gridContainer: {
     [theme.breakpoints.down('xs')]: {
       flexDirection: 'column-reverse',

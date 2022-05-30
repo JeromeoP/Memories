@@ -30,7 +30,7 @@ const Post = ({post, setCurrentId}) => {
   };
 
  return (
-    <Card className = {classes.card}>
+    <Card className = {classes.card} raised elevation = {6}>
       <CardMedia className = {classes.media} image = {post.selectedFile} title = {post.title} />
       <div className = {classes.overlay}>
       <Typography variant ="h6">{post.name}</Typography>
@@ -59,11 +59,11 @@ const Post = ({post, setCurrentId}) => {
       </CardContent>
 
       <CardActions className = {classes.cardActions}>
-        <Button size = "small" color = "primary" disabled = {!user?.result} onClick={() => dispatch(likePost(post._id)) }>
+        <Button size = "small" color = "primary" className = {classes.buttons} disabled = {!user?.result} onClick={() => dispatch(likePost(post._id)) }>
           <Likes />
         </Button>
         {(user?.result.googleId === post?.creator || user?.result?._id === post?.creator) && (
-            <Button size = "small" color = "primary" onClick={() => dispatch(deletePost(post._id)) }>
+            <Button size = "small" color = "inherit" onClick={() => dispatch(deletePost(post._id)) }>
             <DeleteIcon fontSize = "small"/>
             Delete
           </Button>

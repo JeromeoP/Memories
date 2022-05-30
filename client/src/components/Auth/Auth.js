@@ -88,7 +88,7 @@ const Auth = () => {
                     }
                 </Grid>
             
-                <Button type = "submit" fullWidth variant = "contained" color = "primary" className = {classes.submit}>
+                <Button type = "submit" fullWidth variant = "contained" color = "inherit" className = {classes.submit}>
                     {isSignUp ? "Sign Up" : "Sign In"}
                     </Button>
 
@@ -98,7 +98,7 @@ const Auth = () => {
                 render={(renderProps)=> (
                     <Button
                     className = {classes.googleButton} 
-                    color = "primary" 
+                    color = "inherit" 
                     fullWidth 
                     onClick = {renderProps.onClick} 
                     disabled = {renderProps.disabled} 

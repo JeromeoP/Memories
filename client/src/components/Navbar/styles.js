@@ -9,14 +9,18 @@ export default makeStyles((theme) => ({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    padding: '10px 90px',
+    padding: '10px 50px',
+    [theme.breakpoints.down('sm')]: {
+      flexDirection: 'column',
+    },
   },
   heading: {
     color: 'rgba(0,183,255, 1)',
     textDecoration: 'none',
   },
   image: {
-    marginLeft: '15px',
+    marginLeft: '10px',
+    marginTop: '5px',
   },
   toolbar: {
     display: 'flex',
@@ -33,8 +37,8 @@ export default makeStyles((theme) => ({
     justifyContent: 'flex-end',
 
 
-    backgroundColor: "#00203F",
-    color: "#ADF0D1",
+    backgroundColor: "#D6D6D6",
+    color: "#000000",
   },
   userName: {
     display: 'flex',
@@ -45,8 +49,8 @@ export default makeStyles((theme) => ({
     alignItems: 'center',
   },
   purple: {
-    color: "#ADF0D1",
-    backgroundColor: "#00203F",
+    color: "#000000",
+    backgroundColor: "#D6D6D6",
  
   }
 }));

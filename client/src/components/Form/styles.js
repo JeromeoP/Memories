@@ -9,7 +9,7 @@ export default makeStyles((theme) => ({
   },
   paper: {
     padding: theme.spacing(2),
-    backgroundColor: "#F2F2F2",
+    backgroundColor: "#f7f8fc",
 
 
   },
@@ -24,13 +24,13 @@ export default makeStyles((theme) => ({
     margin: '10px 0',
   },
   buttonSubmit: {
-    marginBottom: 10,
-    backgroundColor: "#00203F",
-    color: "#ADF0D1",
+    marginBottom: 10, 
+     color: "#000000",
+    backgroundColor: "#D6D6D6",
 
   },
   buttonClear: {
-    backgroundColor: "#00203F",
-    color: "#ADF0D1",
+    color: "#000000",
+    backgroundColor: "#D6D6D6",
   },
 }));
